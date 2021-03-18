@@ -23,3 +23,4 @@ a.melhor_expressão_ajustamento(mostrar=True) #verificando qual é o melhor ajus
 a.calculo_ajustamento(x=10,ajustamento='Linear') #calculando um valor de y, dado um valor de x em determinado ajustamento
 
 
+#alo alo alo, vamos comer batata
