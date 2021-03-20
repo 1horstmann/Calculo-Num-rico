@@ -1,5 +1,4 @@
-# Importando as bibliotecas
-import p2 #importando a biblioteca que faz o calculo
+import classes 
 
 
 # Definição de dados
@@ -8,7 +7,7 @@ y = [211, 167, 131, 191, 220, 297, 7, 211, 300, 107, 167, 266, 227, 86, 207, 115
 
 
 # Chamando a classe
-a = p2.Ajustamento_de_curvas(x,y) 
+a = classes.AjustamentoDeCurvas(x,y)
 
 
 # Utilizando a classe
@@ -21,6 +20,3 @@ a.ajustamento_hiperbolico() #calculando o ajustamento hiperbólico
 a.ajustamento_loglog() #calculando o ajustamento log log
 a.melhor_expressão_ajustamento(mostrar=True) #verificando qual é o melhor ajustamento
 a.calculo_ajustamento(x=10,ajustamento='Linear') #calculando um valor de y, dado um valor de x em determinado ajustamento
-
-
-#alo alo alo, vamos comer batata
