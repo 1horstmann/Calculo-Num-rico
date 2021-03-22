@@ -2,14 +2,13 @@ import numpy as np
 import matplotlib.pyplot as pt
 import sympy as sp
 
-class Ajustamento_de_curvas():
+class AjustamentoDeCurvas():
     
-    def __init__(self, x: list, y: list):
+    def __init__(self, x, y, **kwargs):
         self.x = x
         self.y = y
         self.n = len(self.x)
         self.calculo_variaveis()
-        self.max_min()
 
       
     def calculo_variaveis(self):   
@@ -26,6 +25,15 @@ class Ajustamento_de_curvas():
         self.x2y_total = 0
         self.xlny_total = 0
 
+        X = self.x[:]
+        X.sort()
+        Y = self.y[:]
+        Y.sort()
+        self.xmax = X[-1]
+        self.xmin = X[0]
+        self.ymax = Y[-1]
+        self.ymin = Y[0] 
+
         for i in range(self.n):
             self.x_total = self.x_total + self.x[i]
             self.x2_total = self.x2_total + self.x[i]**2
@@ -41,27 +49,22 @@ class Ajustamento_de_curvas():
             self.xlny_total = self.xlny_total + self.x[i]*np.log(self.y[i])
 
 
-    def max_min(self):
-        X = self.x[:]
-        X.sort()
-        Y = self.y[:]
-        Y.sort()
-        self.xmax = X[-1]
-        self.xmin = X[0]
-        self.ymax = Y[-1]
-        self.ymin = Y[0]
         
 
-    def calculo_r(self):
+    def calculo_r(self, mostrar=False):
         self.sxx = self.x2_total - self.x_total**2/self.n
+        print(self.sxx)
         self.syy = self.y2_total - self.y_total**2/self.n
+        print(self.syy)
         self.sxy = self.xy_total - (self.x_total*self.y_total)/self.n
+        print(self.sxy)
         self.r = round(self.sxy/(np.sqrt(self.sxx*self.syy)),5)
-
-        print(f'r = {self.r}')
+        if mostrar:
+            print(f'r = {self.r}')
 
 
     def calculo_r2(self):
+        self.calculo_r()
         print(f'r^2 = {round(self.r**2,5)}')
 
 
@@ -284,6 +287,7 @@ class Ajustamento_de_curvas():
             else:
                 print('Entrada inválida')
         
+
         
 
         
